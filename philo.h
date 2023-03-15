@@ -6,7 +6,7 @@
 /*   By: zjaddad <zjaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:30:00 by zjaddad           #+#    #+#             */
-/*   Updated: 2023/03/15 18:50:40 by zjaddad          ###   ########.fr       */
+/*   Updated: 2023/03/15 23:08:45 by zjaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,14 @@ typedef struct philo
 {
 	struct philo	*phl;
 	int				idx;
+	int				n_p;
+	int				i;
 	unsigned long	t_crt;
 	unsigned long	t_eat;
 	unsigned long	t_slp;
 	unsigned long	t_die;
 	unsigned long	n_eat;
+	pthread_t		philo;
 	pthread_mutex_t	*fork;
 }	t_philo;
 
@@ -48,10 +51,11 @@ typedef struct p_inf
 	int		i;
 }	t_p_inf;
 
-int		param_check(char **av, t_p_inf **fill);
+int		param_check(char **av, t_philo **inf);
 char	**ft_split(char const *s, char c);
 char	*ft_strdup(const char *s1);
 size_t	ft_strlen(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 #endif
+
