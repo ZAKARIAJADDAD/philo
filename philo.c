@@ -6,21 +6,49 @@
 /*   By: zjaddad <zjaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:40:19 by zjaddad           #+#    #+#             */
-/*   Updated: 2023/03/15 23:09:45 by zjaddad          ###   ########.fr       */
+/*   Updated: 2023/03/16 20:20:35 by zjaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	init_struct(t_philo **inf)
+void	init_struct(t_philo **inf, char **av)
 {
-	*inf = malloc(sizeof(struct philo));
+	*inf = malloc(sizeof(struct philo) * ft_atoi(av[1]));
+	(*inf)->fork = malloc(sizeof(pthread_mutex_t) * ft_atoi(av[1]));
 	if(!inf)
 		return ;
+	(*inf)->n_p = ft_atoi(av[1]);
+	(*inf)->t_die = ft_atoi(av[2]);
+	(*inf)->t_eat = ft_atoi(av[3]);
+	(*inf)->t_slp = ft_atoi(av[4]);
+	if (av[5])
+		(*inf)->n_eat = ft_atoi(av[5]);
+	else
+		(*inf)->n_eat = 0;	
+}
+
+unsigned long get_t(void)
+{
+	struct timeval	tv;
+
+	gettimeofday(&tv, NULL);
+	return ((tv.tv_sec * 1000) + (tv.tv_usec / 10000));
+}
+
+void	ft_uspleep(unsigned long tm)
+{
+	unsigned long sv = get_t();
+
+	while (get_t() - sv <= tm)
+	{
+		usleep(100);
+	}
 }
 
 void	routine(void *arg)
 {
+	ft_uspleep(1000);
 	
 }
 
@@ -30,14 +58,17 @@ int	main(int ac, char **av)
 
 	if (ac == 5 || ac == 6)
 	{
-		init_struct(&inf);
-		if (param_check(av, &inf) == -1)
+		if (param_check(av) == -1)
 			return (write(2, "Invalid Argument.\n", 18));
+		init_struct(&inf, av);
 		while (inf->i < inf->n_p)
 		{
+			inf[inf->i].fork = inf[0].fork;
+			inf->idx = inf->i + 1;
 			pthread_create(&inf->philo[inf->i], NULL, routine, &inf);
 			inf->i++;
 		}
+		
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: zjaddad <zjaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 23:22:36 by zjaddad           #+#    #+#             */
-/*   Updated: 2023/03/15 23:07:45 by zjaddad          ###   ########.fr       */
+/*   Updated: 2023/03/16 14:51:41 by zjaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,10 @@ int	white_space(char *p)
 	return (1);
 }
 
-int	param_check(char **av, t_philo **inf)
+int	param_check(char **av)
 {
 	int	i;
 	int	j;
-	// t_p_inf	*fill;
 
 	i = 1;
 	while (av[i])
@@ -67,6 +66,5 @@ int	param_check(char **av, t_philo **inf)
 			break;
 		i++;
 	}
-	(*inf)->n_p = ft_atoi(av[1]);
 	return (j);
 }

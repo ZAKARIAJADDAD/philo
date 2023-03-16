@@ -6,7 +6,7 @@
 /*   By: zjaddad <zjaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:30:00 by zjaddad           #+#    #+#             */
-/*   Updated: 2023/03/15 23:08:45 by zjaddad          ###   ########.fr       */
+/*   Updated: 2023/03/16 17:25:36 by zjaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,15 @@ typedef struct p_inf
 	int		i;
 }	t_p_inf;
 
-int		param_check(char **av, t_philo **inf);
-char	**ft_split(char const *s, char c);
-char	*ft_strdup(const char *s1);
-size_t	ft_strlen(const char *s);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
+int			param_check(char **av);
+void		init_struct(t_philo **inf, char **av);
+char		**ft_split(char const *s, char c);
+char		*ft_strdup(const char *s1);
+size_t		ft_strlen(const char *s);
+char		*ft_substr(char const *s, unsigned int start, size_t len);
+int			ft_atoi(const char *s);
+void		ft_uspleep(unsigned long tm);
+unsigned long get_t(void);
 
 #endif
 
