@@ -6,7 +6,7 @@
 /*   By: zjaddad <zjaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:40:19 by zjaddad           #+#    #+#             */
-/*   Updated: 2023/03/16 20:20:35 by zjaddad          ###   ########.fr       */
+/*   Updated: 2023/03/18 15:36:08 by zjaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	init_struct(t_philo **inf, char **av)
 	if (av[5])
 		(*inf)->n_eat = ft_atoi(av[5]);
 	else
-		(*inf)->n_eat = 0;	
+		(*inf)->n_eat = -1;	
 }
 
 unsigned long get_t(void)
@@ -48,8 +48,18 @@ void	ft_uspleep(unsigned long tm)
 
 void	routine(void *arg)
 {
-	ft_uspleep(1000);
-	
+	t_philo	*inf;
+
+	inf = (t_philo *)arg;
+	while (1)
+	{
+		//eat
+		//print_spleep
+		//sleep_timetosleep
+		//print_thinking
+		
+	}
+	uspleep(50);
 }
 
 int	main(int ac, char **av)
@@ -61,14 +71,15 @@ int	main(int ac, char **av)
 		if (param_check(av) == -1)
 			return (write(2, "Invalid Argument.\n", 18));
 		init_struct(&inf, av);
-		while (inf->i < inf->n_p)
-		{
-			inf[inf->i].fork = inf[0].fork;
-			inf->idx = inf->i + 1;
-			pthread_create(&inf->philo[inf->i], NULL, routine, &inf);
-			inf->i++;
-		}
-		
+		if (!init_simulation(&inf))
+			return (0);
+		// while (inf->i < inf->n_p)
+		// {
+		// 	inf[inf->i].fork = inf[0].fork;
+		// 	inf->idx = inf->i + 1;
+		// 	pthread_create(&inf->philo[inf->i], NULL, *routine, &inf);
+		// 	inf->i++;
+		// }
 	}
 }
 
@@ -79,4 +90,4 @@ int	main(int ac, char **av)
 //make sleep (200 microsec) in routine function;
 //make mutex_lock/mutex_unlock 2 times because each philo-
 //must take 2 forks
-//make infinite loop in routine function
+//make infinite loop in routine function 

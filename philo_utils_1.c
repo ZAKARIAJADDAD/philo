@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   philo_utils_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zjaddad <zjaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/06 15:06:20 by zjaddad           #+#    #+#             */
-/*   Updated: 2023/03/15 14:35:31 by zjaddad          ###   ########.fr       */
+/*   Created: 2023/03/18 14:41:38 by zjaddad           #+#    #+#             */
+/*   Updated: 2023/03/18 15:41:33 by zjaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include"philo.h"
 
-size_t	ft_strlen(const char *s)
+int	init_simulation(t_philo	**inf)
 {
-	size_t	i;
+	long	start;
+	int		i;
 
 	i = 0;
-	if (!s)
-		return (0);
-	while (s[i] != '\0')
+	while (i < (*inf)->n_p)
+	{
+		if (pthread_mutex_init(&(*inf + i)->fork, NULL))
+			return (0);
 		i++;
-	return (i);
+	}
+	i = 0;
+	start = get_t();
+	while (i < (*inf)->n_p)
+	{
+		(*inf)->id = i + 1;
+		i++;
+	}
 }
