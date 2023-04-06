@@ -6,11 +6,12 @@
 #    By: zjaddad <zjaddad@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/07 15:20:28 by zjaddad           #+#    #+#              #
-#    Updated: 2023/03/18 14:41:17 by zjaddad          ###   ########.fr        #
+#    Updated: 2023/04/06 17:23:43 by zjaddad          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC= cc -pthread
+CC= cc
+SANI_TH = -fsanitize=thread
 CFLAGS= -Wall -Wextra -Werror
 AR= ar -rc
 
@@ -26,7 +27,7 @@ $(NAME):$(OBJS)
 	$(CC) $(OBJS) -o $(NAME)
 
 %.o:%.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC)  $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS)

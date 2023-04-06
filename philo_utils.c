@@ -51,20 +51,30 @@ int	white_space(char *p)
 	return (1);
 }
 
-int	param_check(char **av)
+int	param_check(char **av, int ac)
 {
 	int	i;
 	int	j;
+	(void)ac;
 
 	i = 1;
 	while (av[i])
 	{
-		if (av[i][0] == '\0' || white_space(av[i]) == 0)
-			return (-1);
 		j = ft_atoi(av[i]);
-		if (j == -1)
-			break;
+		if (ft_atoi(av[1]) == 0)
+			return (-2);
+		if (av[i][0] == '\0' || white_space(av[i]) == 0 || j <= 0)
+			return (-1);
 		i++;
 	}
 	return (j);
+}
+
+int	print_error(int nb)
+{
+	if (nb == -1)
+		write(2, "Invalid Argument.\n", 18);
+	if(nb == -2)
+		write(2, "Error: Number of philo should be greater than 0.\n", 49);
+	return (0);
 }

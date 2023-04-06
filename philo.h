@@ -37,15 +37,17 @@ typedef struct philo
 	int				i;
 	int				next;
 	int				bolean;
-	unsigned long	t_crt;
-	unsigned long	t_eat;
-	unsigned long	t_slp;
-	unsigned long	t_die;
-	unsigned long	n_eat;
-	unsigned long	last_eat;
-	unsigned long	tmp_t;
+	int				situ;
+	int				t_eat;
+	int				t_slp;
+	int				t_die;
+	int				n_eat;
+	long			crt_t;
+	long			start_t;
+	long			last_eat;
+	long			tmp_t;
 	pthread_t		philo;
-	pthread_mutex_t	*fork;
+	pthread_mutex_t	fork;
 }	t_philo;
 
 typedef struct p_inf
@@ -55,13 +57,16 @@ typedef struct p_inf
 	int		i;
 }	t_p_inf;
 
-int				param_check(char **av);
-void			init_struct(t_philo **inf, char **av);
-int				init_simulation(t_philo	**inf);
-size_t			ft_strlen(const char *s);
+int				param_check(char **av, int ac);
 int				ft_atoi(const char *s);
+int				init_simulation(t_philo	*inf);
+int				print_error(int nb);
+void			init_struct(t_philo **inf, char **av);
 void			ft_uspleep(unsigned long tm);
-unsigned long	get_t(void);
+void			*routine(void *arg);
+void			show_msg(t_philo *inf, char *s, int time);
+size_t			ft_strlen(const char *s);
+long			get_t(void);
 
 #endif
 
