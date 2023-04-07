@@ -6,7 +6,7 @@
 /*   By: zjaddad <zjaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:30:00 by zjaddad           #+#    #+#             */
-/*   Updated: 2023/04/07 03:18:25 by zjaddad          ###   ########.fr       */
+/*   Updated: 2023/04/07 14:22:42 by zjaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct philo
 	long			tmp_t;
 	pthread_t		philo;
 	pthread_mutex_t	fork;
+	pthread_mutex_t	msg_mutex;
 }	t_philo;
 
 int				param_check(char **av);

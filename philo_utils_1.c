@@ -6,7 +6,7 @@
 /*   By: zjaddad <zjaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 14:41:38 by zjaddad           #+#    #+#             */
-/*   Updated: 2023/04/07 03:18:47 by zjaddad          ###   ########.fr       */
+/*   Updated: 2023/04/07 14:25:38 by zjaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	show_msg(t_philo *inf, char *s, int time)
 {
+	pthread_mutex_lock(&inf->msg_mutex);
 	if (inf->situ == 1)
 	{
 		inf->crt_t = get_t();
@@ -26,6 +27,7 @@ void	show_msg(t_philo *inf, char *s, int time)
 				usleep(100);
 		}
 	}
+	pthread_mutex_unlock(&inf->msg_mutex);
 }
 
 void	supervisor(t_philo *inf)
