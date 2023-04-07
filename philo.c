@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "philo.h"
-
+/*EDIT*/
 void	init_struct(t_philo **inf, char **av)
 {
 	int	i;
