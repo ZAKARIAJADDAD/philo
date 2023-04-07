@@ -6,20 +6,20 @@
 /*   By: zjaddad <zjaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:30:00 by zjaddad           #+#    #+#             */
-/*   Updated: 2023/03/18 16:04:55 by zjaddad          ###   ########.fr       */
+/*   Updated: 2023/04/07 03:18:25 by zjaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
-#define	PHILO_H
+# define PHILO_H
 
-#include<stdio.h>
-#include<string.h>
-#include<unistd.h>
-#include<stdlib.h>
-#include<limits.h>
-#include<sys/time.h>
-#include <pthread.h>
+# include<stdio.h>
+# include<string.h>
+# include<unistd.h>
+# include<stdlib.h>
+# include<limits.h>
+# include<sys/time.h>
+# include <pthread.h>
 
 typedef struct atoi
 {
@@ -27,7 +27,6 @@ typedef struct atoi
 	long	result;
 	int		sign;
 }	t_ati;
-
 
 typedef struct philo
 {
@@ -50,16 +49,9 @@ typedef struct philo
 	pthread_mutex_t	fork;
 }	t_philo;
 
-typedef struct p_inf
-{
-	t_philo	*philo;
-	int		n_p;
-	int		i;
-}	t_p_inf;
-
-int				param_check(char **av, int ac);
+int				param_check(char **av);
 int				ft_atoi(const char *s);
-int				init_simulation(t_philo	*inf);
+int				init_simulation(t_philo	*inf, long start);
 int				print_error(int nb);
 void			init_struct(t_philo **inf, char **av);
 void			ft_uspleep(unsigned long tm);
@@ -69,4 +61,3 @@ size_t			ft_strlen(const char *s);
 long			get_t(void);
 
 #endif
-

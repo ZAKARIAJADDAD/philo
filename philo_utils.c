@@ -6,7 +6,7 @@
 /*   By: zjaddad <zjaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 23:22:36 by zjaddad           #+#    #+#             */
-/*   Updated: 2023/03/16 14:51:41 by zjaddad          ###   ########.fr       */
+/*   Updated: 2023/04/07 03:00:16 by zjaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,9 @@ int	ft_atoi(const char *s)
 
 int	white_space(char *p)
 {
-	int	i = 0;
+	int	i;
 
+	i = 0;
 	while (p[i])
 	{
 		if (p[i] == ' ' || (p[i] >= 9 && p[i] <= 13))
@@ -51,11 +52,10 @@ int	white_space(char *p)
 	return (1);
 }
 
-int	param_check(char **av, int ac)
+int	param_check(char **av)
 {
 	int	i;
 	int	j;
-	(void)ac;
 
 	i = 1;
 	while (av[i])
@@ -74,7 +74,7 @@ int	print_error(int nb)
 {
 	if (nb == -1)
 		write(2, "Invalid Argument.\n", 18);
-	if(nb == -2)
+	if (nb == -2)
 		write(2, "Error: Number of philo should be greater than 0.\n", 49);
 	return (0);
 }
