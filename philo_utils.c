@@ -6,7 +6,7 @@
 /*   By: zjaddad <zjaddad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 23:22:36 by zjaddad           #+#    #+#             */
-/*   Updated: 2023/04/07 03:00:16 by zjaddad          ###   ########.fr       */
+/*   Updated: 2023/04/10 22:18:35 by zjaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,13 @@ int	print_error(int nb)
 	if (nb == -2)
 		write(2, "Error: Number of philo should be greater than 0.\n", 49);
 	return (0);
+}
+
+void	ft_usleep(unsigned long time)
+{
+	unsigned long	init;
+
+	init = get_t();
+	while (get_t() - init < time)
+		usleep(200);
 }
